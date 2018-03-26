@@ -17,6 +17,27 @@
   <p class="warning"><span class="icon icon-lock"><%= l(:text_project_closed) %></span></p>
 <% end %>
 
+<div class="splitcontentright">
+  <%= render :partial => 'members_box' %>
+
+  <% if @news.any? && authorize_for('news', 'index') %>
+  <div class="news box">
+    <h3 class="icon icon-news"><%=l(:label_news_latest)%></h3>
+    <%= render :partial => 'news/news', :collection => @news %>
+    <p><%= link_to l(:label_news_view_all), project_news_index_path(@project) %></p>
+  </div>
+  <% end %>
+
+  <% if @subprojects.any? %>
+  <div class="projects box">
+    <h3 class="icon icon-projects"><%=l(:label_subproject_plural)%></h3>
+    <%= @subprojects.collect{|p| link_to p, project_path(p), :class => p.css_classes}.join(", ").html_safe %>
+  </div>
+  <% end %>
+
+  <%= call_hook(:view_projects_show_right, :project => @project) %>
+</div>
+
 <div class="splitcontentleft">
   <% if @project.description.present? %>
   <div class="wiki">
@@ -95,27 +116,6 @@
   </div>
 <% end %>
   <%= call_hook(:view_projects_show_left, :project => @project) %>
-</div>
-
-<div class="splitcontentright">
-  <%= render :partial => 'members_box' %>
-
-  <% if @news.any? && authorize_for('news', 'index') %>
-  <div class="news box">
-    <h3 class="icon icon-news"><%=l(:label_news_latest)%></h3>
-    <%= render :partial => 'news/news', :collection => @news %>
-    <p><%= link_to l(:label_news_view_all), project_news_index_path(@project) %></p>
-  </div>
-  <% end %>
-
-  <% if @subprojects.any? %>
-  <div class="projects box">
-    <h3 class="icon icon-projects"><%=l(:label_subproject_plural)%></h3>
-    <%= @subprojects.collect{|p| link_to p, project_path(p), :class => p.css_classes}.join(", ").html_safe %>
-  </div>
-  <% end %>
-
-  <%= call_hook(:view_projects_show_right, :project => @project) %>
 </div>
 
 <% content_for :sidebar do %>

@@ -133,7 +133,7 @@ div.gravatar-with-child > img.gravatar:nth-child(2) {
 	top: 29px;
 	position: fixed;
 	width: 100%;
-	z-index:10000;
+	z-index:999;
 }
 
 #header > h1 {
@@ -171,10 +171,14 @@ div.gravatar-with-child > img.gravatar:nth-child(2) {
 	padding: 7px 20px 2px 25px;
  	font-size: 0.9em;
 	position: fixed;
-    	width: 100%;
+    	width: 99%;
     	left: 0;
     	top: 0;
     	z-index: 1000;
+}
+
+#top-menu ul li span.notification-title {
+	display: none;
 }
 
 #top-menu a {
@@ -403,7 +407,7 @@ div.flash.warning, .conflict {
 }
 
 .wiki h1 {
-	font-size: 28px;
+	font-size: 20px;
 	margin-top: 10px;
 }
 

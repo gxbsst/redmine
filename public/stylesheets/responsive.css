@@ -97,6 +97,7 @@
     background-color: ##20384d;
     position: fixed;
     z-index: 9999;
+    top: 0;
   }
 
   /* Hide project name on mobile (project name is still visible in select menu) */
@@ -202,6 +203,7 @@
 
   #main {
     padding: 64px 0 0; /* padding-top equals header height */
+   margin-top: 0;
   }
 
   #main.nosidebar #content,
